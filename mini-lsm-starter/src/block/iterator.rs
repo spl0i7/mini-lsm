@@ -2,6 +2,7 @@
 #![allow(dead_code)] // TODO(you): remove this lint after implementing this mod
 
 use std::sync::Arc;
+use crate::block::SZ_U16;
 
 use super::Block;
 
@@ -35,12 +36,14 @@ impl BlockIterator {
 
     /// Returns the key of the current entry.
     pub fn key(&self) -> &[u8] {
-        unimplemented!()
+        let key_len = self.key[0..SZ_U16];
+        &self.key[SZ_U16..key_len]
     }
 
     /// Returns the value of the current entry.
     pub fn value(&self) -> &[u8] {
-        unimplemented!()
+        let value_len = self.value[0..SZ_U16];
+        &self.key[SZ_U16..value_len]
     }
 
     /// Returns true if the iterator is valid.
