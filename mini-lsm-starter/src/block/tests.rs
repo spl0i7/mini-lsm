@@ -93,6 +93,8 @@ fn test_block_iterator() {
     }
 }
 
+use std::str::from_utf8;
+
 #[test]
 fn test_block_seek_key() {
     let block = Arc::new(generate_block());
